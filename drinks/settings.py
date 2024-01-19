@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'main_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,11 +74,16 @@ WSGI_APPLICATION = 'drinks.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'DrinksAppDB',
+    'USER': 'jackie.sechrist.3',
+    'PASSWORD': 'zjOtch8m7QPd',
+    'HOST': 'ep-proud-violet-a5ln1uql.us-east-2.aws.neon.tech',
+    'PORT': '5432',
+  }
 }
 
 
