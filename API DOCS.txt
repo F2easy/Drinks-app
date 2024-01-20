@@ -1,15 +1,3 @@
 API CALL:
 
 Because we have premium, this is the start of the URL: https://www.thecocktaildb.com/api/json/v2/{API KEY}/
-
-ENDPOINTS: 
-
-Search By name: /search.php?s={Drink Name}
-Search By letter: /search.php?f={Drink first letter}
-Search By letter: /search.php?i={ingredient name}
-Search By letter: /lookup.php?i={Lookup by ID for SHOW page}
-Search By letter: /lookup.php?iid={Lookup ingredient by ID}
-Search By letter: /random.php 'This is for random'
-Search By letter: /randomselection.php 'random 10 for home page'
-Search By letter: /popular.php 'popular 10 for home page'
-Search By letter: /latest.php 'latest 10 for home page'
