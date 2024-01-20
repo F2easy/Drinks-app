@@ -76,14 +76,14 @@ WSGI_APPLICATION = 'drinks.wsgi.application'
 
 
 DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'DrinksAppDB',
-    'USER': 'jackie.sechrist.3',
-    'PASSWORD': 'zjOtch8m7QPd',
-    'HOST': 'ep-proud-violet-a5ln1uql.us-east-2.aws.neon.tech',
-    'PORT': '5432',
-  }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'DrinksAppDB',
+        'USER': 'jackie.sechrist.3',
+        'PASSWORD': 'zjOtch8m7QPd',
+        'HOST': 'ep-proud-violet-a5ln1uql.us-east-2.aws.neon.tech',
+        'PORT': '5432',
+    }
 }
 
 

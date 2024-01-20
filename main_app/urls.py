@@ -8,4 +8,5 @@ urlpatterns = [
   path('drinks/', views.drinks_index, name='index'),
   path('show/', views.show_page, name='show')
   
+
 ]
