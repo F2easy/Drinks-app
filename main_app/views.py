@@ -16,7 +16,6 @@ letter_search = '/search.php?f=' #{Drink first letter}
 ingredient_search = '/search.php?i=' #{ingredient name}
 drink_id = '/lookup.php?i=' #{Lookup by ID for SHOW page}
 ingredient_id = '/lookup.php?iid=' #{Lookup ingredient by ID}
-api = os.environ['APIKEY']
 
 # Create views here.
 
@@ -27,7 +26,6 @@ def home(request):
     response = requests.request("GET", url, headers=headers, data=payload)
     response = response.json()
     print(f'This is response{response}')
-    # drink = response.get('drinks')[0]['strDrink']
     drinks = filter(lambda drink: drink, response['drinks'])
     return render(request, 'home.html', {'response': response, 'api': api, 'drink_id': drink_id, 'drinks': drinks})
 
@@ -46,8 +44,8 @@ def drinks_index(request):
     return render(request, 'index.html', {'drinks':drinks})
 
 
-def show_page(request, idDrink):
-    url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}/{idDrink}'
+def show_page(request, id_drink):
+    url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}/{id_drink}'
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
