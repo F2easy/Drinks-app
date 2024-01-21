@@ -4,18 +4,37 @@ from .models import ShoppingList
 import requests
 import os
 
+
+# Variables
+
+api = os.environ['APIKEY']
+random_10 = '/randomselection.php'
+random = '/random.php'
+popular_10 = '/popular.php'
+latest = '/latest.php'
+
+search = '/search.php?s=' #{Drink Name}
+letter_search = '/search.php?f=' #{Drink first letter}
+ingredient_search = '/search.php?i=' #{ingredient name}
+drink_id = '/lookup.php?i=' #{Lookup by ID for SHOW page}
+ingredient_id = '/lookup.php?iid=' #{Lookup ingredient by ID}
+
+
 # Create views here.
 api = os.environ['APIKEY']
 
 def home(request):
-    url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
+    url = f"https://www.thecocktaildb.com/api/json/v2/{api}/{random_10}"
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
-    response = response.json
-    
-    
-    return render(request, 'home.html', {'response': response})
+
+    response = response.json()
+    print(f'This is response{response}')
+    drink = response.get('drinks')[0]['strDrink']
+    # drink.json
+    return render(request, 'home.html', {'response': response, 'api': api, 'drink_id': drink_id, 'drink': drink})
+
 
 
 def about(request):
@@ -32,8 +51,12 @@ def drinks_index(request):
 
     return render(request, 'index.html', {'drinks':drinks})
 
-def show_page(request, idDrink ):
+def show_page(request, idDrink):
+
+    url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}/'#drinkID
     return(render(request, 'show.html'))
+
+    
 
 def add_to_shopping_list(request, ingredient_name):
     user = request.user
