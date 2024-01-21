@@ -32,7 +32,7 @@ def drinks_index(request):
 
     return render(request, 'index.html', {'drinks':drinks})
 
-def show_page(request):
+def show_page(request, idDrink ):
     return(render(request, 'show.html'))
 
 def add_to_shopping_list(request, ingredient_name):
