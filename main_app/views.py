@@ -4,7 +4,6 @@ from .models import ShoppingList
 import requests
 import os
 
-
 # Variables
 
 api = os.environ['APIKEY']
@@ -12,29 +11,23 @@ random_10 = '/randomselection.php'
 random = '/random.php'
 popular_10 = '/popular.php'
 latest = '/latest.php'
-
 search = '/search.php?s=' #{Drink Name}
 letter_search = '/search.php?f=' #{Drink first letter}
 ingredient_search = '/search.php?i=' #{ingredient name}
 drink_id = '/lookup.php?i=' #{Lookup by ID for SHOW page}
 ingredient_id = '/lookup.php?iid=' #{Lookup ingredient by ID}
 
-
 # Create views here.
-api = os.environ['APIKEY']
 
 def home(request):
     url = f"https://www.thecocktaildb.com/api/json/v2/{api}/{random_10}"
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
-
     response = response.json()
     print(f'This is response{response}')
-    drink = response.get('drinks')[0]['strDrink']
-    # drink.json
-    return render(request, 'home.html', {'response': response, 'api': api, 'drink_id': drink_id, 'drink': drink})
-
+    drinks = filter(lambda drink: drink, response['drinks'])
+    return render(request, 'home.html', {'response': response, 'api': api, 'drink_id': drink_id, 'drinks': drinks})
 
 
 def about(request):
@@ -48,29 +41,29 @@ def drinks_index(request):
     headers = {}
     response = requests.get(url, headers=headers, data=payload)
     drinks = response.json()['drinks']
-
     return render(request, 'index.html', {'drinks':drinks})
 
-def show_page(request, idDrink):
 
-    url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}/'#drinkID
-    return(render(request, 'show.html'))
+def show_page(request, id_drink):
+    url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}/{id_drink}'
+    payload = {}
+    headers = {}
+    response = requests.request("GET", url, headers=headers, data=payload)
+    response = response.json()
+    return(render(request, 'show.html', {'response': response, 'api': api}))
 
-    
 
 def add_to_shopping_list(request, ingredient_name):
     user = request.user
     ShoppingList.objects.create(user=user, ingredient_name=ingredient_name)
     return render(request, 'show.html')
 
-#If link in the show page or the nav bar, user should see all the ingrdients that have been added to the list 
+
 def ShoppingList(request):
     return render(request, 'ShoppingList.html')
+
 
 def delete_from_shopping_list(request, ingredient_id):
     shopping_list_entry =  get_object_or_404(ShoppingList, ingredient_id=ingredient_id, user=request.user)
     shopping_list_entry.delete()
     return redirect(request, 'ShoppingList.html')
-    
-
-
