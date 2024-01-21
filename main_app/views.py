@@ -25,7 +25,7 @@ def home(request):
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
     response = response.json()
-    print(f'This is response{response}')
+
     drinks = filter(lambda drink: drink, response['drinks'])
     return render(request, 'home.html', {'response': response, 'api': api, 'drink_id': drink_id, 'drinks': drinks})
 
@@ -35,7 +35,6 @@ def about(request):
 
 
 def drinks_index(request):
-    api_key = os.environ['APIKEY']
     url = f"https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
     payload = {}
     headers = {}
@@ -45,12 +44,13 @@ def drinks_index(request):
 
 
 def show_page(request, id_drink):
-    url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}/{id_drink}'
+    url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}{id_drink}'
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
     response = response.json()
-    return(render(request, 'show.html', {'response': response, 'api': api}))
+
+    return render(request, 'show.html', {'response': response, 'api': api})
 
 
 def add_to_shopping_list(request, ingredient_name):
