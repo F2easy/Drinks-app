@@ -5,8 +5,11 @@ from . import views
 urlpatterns = [
   path('', views.home, name='home'),
   path('about/', views.about, name='about'),
-  path('drinks/', views.drinks_index, name='index'),
-  path('show/', views.show_page, name='show')
+  path('index/', views.drinks_index, name='drinks_index'),
+  path('show/<int:idDrink>', views.show_page, name='show'),
+  path('add_to_shopping_list/<str:ingredient_name>/', views.add_to_shopping_list, name='add_to_shopping_list'),
+  path('ShoppingList/', views.ShoppingList, name ='ShoppingList'),
+  path('delete_from_shopping_list/<int:ingredient_id>/', views.delete_from_shopping_list, name='delete_from_shopping_list')
   
-
+  
 ]
