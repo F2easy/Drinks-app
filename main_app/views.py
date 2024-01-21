@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect,  get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 from .models import ShoppingList
 import requests
 import os
@@ -52,6 +54,25 @@ def show_page(request, id_drink):
     response = response.json()
     return(render(request, 'show.html', {'response': response, 'api': api}))
 
+
+def registration(request, user):
+    pass
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Login successful.')
+            return redirect('home.html') 
+        else:
+            messages.error(request, 'Invalid username or password.')
+
+    return render(request, 'user/login.html') 
 
 def add_to_shopping_list(request, ingredient_name):
     user = request.user
