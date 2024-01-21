@@ -23,9 +23,11 @@ def home(request):
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
-    response = response.json
-    
-    return render(request, 'home.html', {'response': response})
+    response = response.json()
+    print(f'This is response{response}')
+    drink = response.get('drinks')[0]['strDrink']
+    # drink.json
+    return render(request, 'home.html', {'response': response, 'api': api, 'drink_id': drink_id, 'drink': drink})
 
 
 def about(request):
@@ -36,4 +38,5 @@ def drinks_index(request):
     return render(request, 'index.html')
 
 def show_page(request):
+    url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}/'#drinkID
     return(render(request, 'show.html'))
