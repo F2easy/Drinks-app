@@ -1,89 +1,87 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
-    <div class="col s4">
-        {% for drink in response.drinks %}
-        <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="{{ drink.strDrinkThumb }}">
-            </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">{{ drink.strDrink }}</span>
-                <p><a href="#">See more</a></p>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Ingredients<i class="material-icons right">close</i></span>
-                <ul>
-                    {% if drink.strIngredient1 != None %}    
-                        <p>{{ drink.strIngredient1 }}</p>
-                    {% else %}
-                            <p></p>
-                    {% endif %} 
-                </ul>
-                <ul>
-                    {% if drink.strIngredient2 != "None" %}    
-                        <p>{{ drink.strIngredient2 }}</p>
-                    {% else %}
-                            <p></p>
-                    {% endif %} 
-                </ul>
-                <ul>
-                    {% if drink.strIngredient3 != "None" %}  
-                        <p>{{ drink.strIngredient3 }}</p>
-                    {% else %}
-                            <p></p>
-                    {% endif %} 
-                </ul>
-                <ul>
-                    {% if drink.strIngredient4 != "None" %}  
-                        <p>{{ drink.strIngredient4 }}</p>
-                    {% else %}
-                            <p></p>
-                    {% endif %} 
-                </ul>
-                <ul>
-                    {% if drink.strIngredient5 != "None" %}  
-                        <p>{{ drink.strIngredient5 }}</p>
-                    {% else %}
-                            <p></p>
-                    {% endif %} 
-                </ul>
-                <ul>
-                    {% if drink.strIngredient6 != "None" %}  
-                        <p>{{ drink.strIngredient6 }}</p>
-                    {% else %}
-                            <p></p>
-                    {% endif %} 
-                </ul>
-                <ul>
-                    {% if drink.strIngredient7 != "None" %}  
-                        <p>{{ drink.strIngredient7 }}</p>
-                    {% else %}
-                            <p></p>
-                    {% endif %} 
-                </ul>
-                <ul>
-                    {% if drink.strIngredient8 != "None" %}  
-                        <p>{{ drink.strIngredient8 }}</p>
-                    {% else %}
-                            <p></p>
-                    {% endif %} 
-                </ul>
-                <ul>
-                    {% if drink.strIngredient9 != "None" %}  
-                        <p>{{ drink.strIngredient9 }}</p>
-                    {% else %}
-                            <p></p>
-                    {% endif %} 
-                </ul>
-                <ul>
-                    {% if not drink.strIngredient9 %}
-                        <p>{{ drink.strIngredient10 }}</p>
-                    {% endif %}
-                </ul>
-            </div>
+    {% for drink in drinks %}
+    <div class="card col s4 center-align">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{ drink.strDrinkThumb }}">
         </div>
-        {% endfor %}
+        <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">{{ drink.strDrink }}</span>
+            <p><a href="#">See more</a></p>
+        </div>
+        <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Ingredients<i class="material-icons right">close</i></span>
+            <ul>
+                {% if drink.strIngredient1 %} 
+                    <p>{{ drink.strIngredient1 }}</p>
+                {% else %}
+                        <p></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient2 %}  
+                    <p>{{ drink.strIngredient2 }}</p>
+                {% else %}
+                        <p></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient3 %}
+                    <p>{{ drink.strIngredient3 }}</p>
+                {% else %}
+                        <p></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient4 %}
+                    <p>{{ drink.strIngredient4 }}</p>
+                {% else %}
+                        <p></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient5 %}
+                    <p>{{ drink.strIngredient5 }}</p>
+                {% else %}
+                        <p></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient6 %}  
+                    <p>{{ drink.strIngredient6 }}</p>
+                {% else %}
+                        <p></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient7 %}  
+                    <p>{{ drink.strIngredient7 }}</p>
+                {% else %}
+                        <p></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient8 %}  
+                    <p>{{ drink.strIngredient8 }}</p>
+                {% else %}
+                        <p></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient9 %}  
+                    <p>{{ drink.strIngredient9 }}</p>
+                {% else %}
+                        <p></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient10 %}
+                    <p>{{ drink.strIngredient10 }}</p>
+                {% endif %}
+            </ul>
+        </div>
     </div>
+    {% endfor %}
 </div>
 {% endblock %}
