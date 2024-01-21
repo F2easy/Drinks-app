@@ -1,0 +1,21 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Index</title>
+</head>
+<body>
+    <!--TEST TO CONFIRM IF INDEX SHOWS DRINKS, change style as needed-->
+    <h1>Drink Index</h1>
+    <ul>
+        {% for drinks in drinks %}
+            <li>
+                <strong>{{ drinks.strDrink }}</strong>
+                <p>ID: {{ drinks.idDrink }}</p>
+                <p>Tags: {{ drinks.strTags }}</p>
+                <p>Image: {{ drinks.strDrinkThumb}}</p>
+            </li>
+        {% endfor %}
+    </ul>
