@@ -45,12 +45,12 @@ def drinks_index(request):
 
 
 def show_page(request, id_drink):
-    url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}/{id_drink}'
+    url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}{id_drink}'
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
-    response = response.json()
-    return(render(request, 'show.html', {'response': response, 'api': api}))
+    ## drinks = response.json()['drinks']
+    return render(request, 'show.html', {'response': response, 'api': api })
 
 
 def add_to_shopping_list(request, ingredient_name):

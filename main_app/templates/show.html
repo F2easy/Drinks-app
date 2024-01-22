@@ -1,15 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container center mine">
-  <a href="/" class="btn btn-warning"> Back to Home</a>
+<div class="container left mine">
+  <a href="/home" class="btn btn-warning"> Back to Home</a>
 </div>
 
-<div class="container">
-  <div class="reg">
-    <h2 class="text-capitalize" class="text-center name title">{{drink.strDrink}} </h2>
+<!-- show page -->
 
-</div>
+  <div class="drink-details">
+    <h2>{{ data.drinks.0.strDrink }}</h2>
+    <img src="{{ data.drinks.0.strDrinkThumb }}" alt="{{ data.drinks.0.strDrink }}" class="drink-image">
 
+    <div class="alternate-drinks">
+      <h3>Alternate Drinks:</h3>
+      <ul>
+        {% for alternate_drink in data.drinks.0.strAlternate %}
+          <li>{{ alternate_drink }}</li>
+        {% endfor %}
+      </ul>
+    </div>
 
+    <div class="ingredients">
+      <h3>Ingredients:</h3>
+      <ul>
+       
+      </ul>
+    </div>
+  </div>
+  
 {% endblock %}
+
+
