@@ -60,12 +60,7 @@ def show_page(request, id_drink):
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
-<<<<<<< HEAD
-    ## drinks = response.json()['drinks']
-    return render(request, 'show.html', {'response': response, 'api': api })
-=======
     response = response.json()
->>>>>>> e3bd0da5124b9c77be7a9219d2a980bb65487159
 
     return render(request, 'show.html', {'response': response, 'api': api})
 
