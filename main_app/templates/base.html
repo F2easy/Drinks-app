@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,10 @@
     <title>Drinks</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <style>
         body {
             background-color: rgb(255, 242, 232);
@@ -21,6 +22,9 @@
         nav{
             background-color: black
         }
+        footer.nav{
+            background-color: black;
+        }
         *{
             font-family: 'Sevillana', cursive;
             font: bold;
@@ -30,9 +34,15 @@
             font: bold;
             color: rgb(130, 175, 171);
         }
-        p.sans{
+        p.sans, h5.sans, div.sans{
             font-family: "arial", Sans-serif;
             font: bold;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        img.logo{
+            width: 13vh;
         }
     </style>
 </head>
@@ -59,5 +69,23 @@
 
         {% endblock %}
     </main>
+    <footer class="page-footer nav">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text sans">Drinks App</h5>
+                    <p class="sans">Special thanks to the CocktailDB API</p>
+                </div>
+                <div class="col l4 offset-l2 s12  right-align">
+                    <img class=logo src="../static/images/Logo.png">
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container sans">
+            © 2014 Copyright Text
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
