@@ -1,5 +1,5 @@
 body {
-  /* background-color: lightsteelblue; */
+  background-color: #A4B6BC;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -7,9 +7,4 @@ body {
 
 main {
   flex: 1 0 auto;
-}
-
-footer.page-footer {
-  padding-top: 0;
-  text-align: right;
 }
