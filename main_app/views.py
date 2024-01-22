@@ -20,7 +20,7 @@ ingredient_id = '/lookup.php?iid=' #{Lookup ingredient by ID}
 # Create views here.
 
 def home(request):
-    url = f"https://www.thecocktaildb.com/api/json/v2/{api}/{random_10}"
+    url = f"https://www.thecocktaildb.com/api/json/v2/{api}{popular_10}"
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
@@ -28,6 +28,16 @@ def home(request):
 
     drinks = filter(lambda drink: drink, response['drinks'])
     return render(request, 'home.html', {'response': response, 'api': api, 'drink_id': drink_id, 'drinks': drinks})
+
+
+def random_index(request):
+    url = f"https://www.thecocktaildb.com/api/json/v2/{api}{random_10}"
+    payload = {}
+    headers = {}
+    response = requests.request("GET", url, headers=headers, data=payload)
+    response = response.json()
+    drinks = filter(lambda drink: drink, response['drinks'])
+    return render(request, 'random.html', {'response': response, 'api': api, 'drink_id': drink_id, 'drinks': drinks})
 
 
 def about(request):
