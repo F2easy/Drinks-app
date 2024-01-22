@@ -22,14 +22,24 @@ ingredient_id = '/lookup.php?iid=' #{Lookup ingredient by ID}
 # Create views here.
 
 def home(request):
-    url = f"https://www.thecocktaildb.com/api/json/v2/{api}/{random_10}"
+    url = f"https://www.thecocktaildb.com/api/json/v2/{api}{popular_10}"
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
     response = response.json()
-    print(f'This is response{response}')
+
     drinks = filter(lambda drink: drink, response['drinks'])
     return render(request, 'home.html', {'response': response, 'api': api, 'drink_id': drink_id, 'drinks': drinks})
+
+
+def random_index(request):
+    url = f"https://www.thecocktaildb.com/api/json/v2/{api}{random_10}"
+    payload = {}
+    headers = {}
+    response = requests.request("GET", url, headers=headers, data=payload)
+    response = response.json()
+    drinks = filter(lambda drink: drink, response['drinks'])
+    return render(request, 'random.html', {'response': response, 'api': api, 'drink_id': drink_id, 'drinks': drinks})
 
 
 def about(request):
@@ -37,7 +47,6 @@ def about(request):
 
 
 def drinks_index(request):
-    api_key = os.environ['APIKEY']
     url = f"https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
     payload = {}
     headers = {}
@@ -47,12 +56,13 @@ def drinks_index(request):
 
 
 def show_page(request, id_drink):
-    url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}/{id_drink}'
+    url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}{id_drink}'
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
     response = response.json()
-    return(render(request, 'show.html', {'response': response, 'api': api}))
+
+    return render(request, 'show.html', {'response': response, 'api': api})
 
 
 def registration(request, user):
