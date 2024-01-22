@@ -1,44 +1,104 @@
+
 {% extends 'base.html' %}
 {% block content %}
 
-<<<<<<< HEAD
-<div class="container left mine">
-  <a href="/home" class="btn btn-warning"> Back to Home</a>
-</div>
+<style>
 
-<!-- show page -->
-=======
-<h2>{{ response.drinks.0.idDrink }}</h2>
+  .drink-details {
+    text-align: center;
+  }
 
-<div class="container center mine">
-  <a href="/" class="btn btn-warning"> Back to Home</a>
-</div>
+  .drink-details h1 {
+    margin-bottom: 10px;
+    text-align: center;
+  }
 
-<div class="container">
-  <div class="reg">
-    <h2 class="text-capitalize" class="text-center name title"></h2>
->>>>>>> e3bd0da5124b9c77be7a9219d2a980bb65487159
+  .drink-image {
+    display: block;
+    margin-right: 40px;
+    margin-bottom: 20%;
+    width: 45%;
+    margin-top: 30px;
+    float: left;
+  }
 
-  <div class="drink-details">
-    <h2>{{ data.drinks.0.strDrink }}</h2>
-    <img src="{{ data.drinks.0.strDrinkThumb }}" alt="{{ data.drinks.0.strDrink }}" class="drink-image">
+  .ingredients {
+    text-align: center;
+    display: inline-block;
+    margin-top: 150px;
+    margin-left: 30px;
+  }
 
-    <div class="alternate-drinks">
-      <h3>Alternate Drinks:</h3>
-      <ul>
-        {% for alternate_drink in data.drinks.0.strAlternate %}
-          <li>{{ alternate_drink }}</li>
-        {% endfor %}
-      </ul>
-    </div>
+  .extra-info {
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 180px;
+    margin-left: 100px;
+    
+  }
+  .extra-info p {
+    font-size: 20px;
+  }
 
-    <div class="ingredients">
-      <h3>Ingredients:</h3>
-      <ul>
-       
-      </ul>
-    </div>
+  .instructions {
+    text-align: center;
+    margin-top: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 60%;
+    transform: translateX(-50%);
+    width: 60%;
+    font-size: 20px
+  }
+
+
+</style>
+
+<div class="drink-details">
+  <h1>{{ response.drinks.0.strDrink }}</h1>
+  <img src="{{ response.drinks.0.strDrinkThumb }}" class="drink-image" alt="Drink Image">
+  <div class="ingredients sans">
+    <h3>Ingredients:</h3>
+    <ul>
+      <li>
+        <span class="ingredient">{{ response.drinks.0.strMeasure1 }}</span>
+        {{ response.drinks.0.strIngredient1 }}
+      </li>
+      <li>
+        <span class="ingredient">{{ response.drinks.0.strMeasure2 }}</span>
+        {{ response.drinks.0.strIngredient2 }}
+      </li>
+      <li>
+        <span class="ingredient">{{ response.drinks.0.strMeasure3 }}</span>
+        {{ response.drinks.0.strIngredient3 }}
+      </li>
+      <li>
+        <span class="ingredient">{{ response.drinks.0.strMeasure4 }}</span>
+        {{ response.drinks.0.strIngredient4 }}
+      </li>
+      <li>
+        <span class="ingredient">{{ response.drinks.0.strMeasure5 }}</span>
+        {{ response.drinks.0.strIngredient5 }}
+      </li>
+    </ul>
   </div>
+  <div class="extra-info sans">
+    <h4>Alcoholic:</h4>
+    <p>{{ response.drinks.0.strAlcoholic }}</p>
+    <h4>Category:</h4>
+    <p>{{ response.drinks.0.strCategory }}</p>
+  </div>
+</div>
+<div class="instructions sans">
+  <h3>Instructions:</h3>
+  <p>{{ response.drinks.0.strInstructions }}</p>
+</div>
+
+
+  <div class="green-button">
+ <a href="{% url 'add_to_shopping_list' drinks.id %}" button type="submit" class="btn btn-outline-dark favButton" value="Favorite">Add to Shopping List</button> </a>
+
   
 {% endblock %}
 
