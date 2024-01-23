@@ -76,7 +76,7 @@ class ShoppingGuideCreate(LoginRequiredMixin, CreateView):
     model = ShoppingGuide
     fields = '__all__'
     
-class ShoppingGuideList(LoginRequiredMixin, ListView):
+class ShoppingGuideList(ListView):
     model = ShoppingGuide
 
 class ShoppingGuideDetail(LoginRequiredMixin, DetailView):
