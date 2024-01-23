@@ -1,18 +1,16 @@
-
 {% extends 'base.html' %}
 {% block content %}
 
+{% extends 'base.html' %}
+{% block content %}
 <style>
-
   .drink-details {
     text-align: center;
   }
-
   .drink-details h1 {
     margin-bottom: 10px;
     text-align: center;
   }
-
   .drink-image {
     display: block;
     margin-right: 40px;
@@ -21,14 +19,12 @@
     margin-top: 30px;
     float: left;
   }
-
   .ingredients {
     text-align: center;
     display: inline-block;
     margin-top: 150px;
     margin-left: 30px;
   }
-
   .extra-info {
     text-align: left;
     display: inline-block;
@@ -40,7 +36,6 @@
   .extra-info p {
     font-size: 20px;
   }
-
   .instructions {
     text-align: center;
     margin-top: 50px;
@@ -54,15 +49,12 @@
   .green-button {
     align-items: right;
     right: 25%
-    
+
   }
 
 
 </style>
-
-<div class="drink-details">
-  <h1>{{ response.drinks.0.strDrink }}</h1>
-  <img src="{{ response.drinks.0.strDrinkThumb }}" class="drink-image" alt="Drink Image">
+@@ -61,26 +66,37 @@ <h1>{{ response.drinks.0.strDrink }}</h1>
   <div class="ingredients sans">
     <h3>Ingredients:</h3>
     <ul>
@@ -76,7 +68,7 @@
       <li>
         <span class="ingredient">{{ response.drinks.0.strMeasure2 }}</span>
         {{ response.drinks.0.strIngredient2 }}
-        
+
       </li>
       {% endif %}
       {% if response.drinks.0.strMeasure3 and response.drinks.0.strIngredient3 %}
@@ -100,22 +92,15 @@
     </ul>
   </div>
   <div class="extra-info sans">
-    <h4>Alcoholic:</h4>
-    <p>{{ response.drinks.0.strAlcoholic }}</p>
-    <h4>Category:</h4>
-    <p>{{ response.drinks.0.strCategory }}</p>
-  </div>
-</div>
-<div class="instructions sans">
-  <h3>Instructions:</h3>
-  <p>{{ response.drinks.0.strInstructions }}</p>
-</div>
+@@ -97,7 +113,7 @@ <h3>Instructions:</h3>
 
 
   <div class="green-button">
+ <a href="{% url 'add_to_shopping_list' drinks.id %}" button type="submit" class="btn btn-outline-dark favButton" value="Favorite">Add to Shopping List</button> </a>
  <a href="{% url 'add_to_shopping_list' response.drinks.0.idDrink %}" button type="submit" class="btn btn-outline-dark favButton" value="Favorite">Add to Shopping List</button> </a>
 
-  
+
 {% endblock %}
 
 
+{% endblock %}
