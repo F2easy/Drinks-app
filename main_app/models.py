@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 class ShoppingGuide(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    drink_name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30)
     drink_id = models.CharField(max_length=20)
     drink_image = models.CharField(max_length=255)
     ingredient_1 = models.CharField(max_length=255)
