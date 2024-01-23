@@ -70,10 +70,6 @@ def show_page(request, id_drink):
     return render(request, 'show.html', {'response': response, 'api': api, 'drinks': drinks})
 
 
-
-
-
-
 # Shopping list Views
 
 class ShoppingGuideCreate(CreateView):
