@@ -51,6 +51,11 @@
     width: 60%;
     font-size: 20px
   }
+  .green-button {
+    align-items: right;
+    right: 25%
+    
+  }
 
 
 </style>
@@ -61,26 +66,37 @@
   <div class="ingredients sans">
     <h3>Ingredients:</h3>
     <ul>
+      {% if response.drinks.0.strMeasure1 and response.drinks.0.strIngredient1 %}
       <li>
         <span class="ingredient">{{ response.drinks.0.strMeasure1 }}</span>
         {{ response.drinks.0.strIngredient1 }}
       </li>
+      {% endif %}
+      {% if response.drinks.0.strMeasure2 and response.drinks.0.strIngredient2 %}
       <li>
         <span class="ingredient">{{ response.drinks.0.strMeasure2 }}</span>
         {{ response.drinks.0.strIngredient2 }}
+        
       </li>
+      {% endif %}
+      {% if response.drinks.0.strMeasure3 and response.drinks.0.strIngredient3 %}
       <li>
         <span class="ingredient">{{ response.drinks.0.strMeasure3 }}</span>
         {{ response.drinks.0.strIngredient3 }}
       </li>
+      {% endif %}ç
+      {% if response.drinks.0.strMeasure4 and response.drinks.0.strIngredient4 %}
       <li>
         <span class="ingredient">{{ response.drinks.0.strMeasure4 }}</span>
         {{ response.drinks.0.strIngredient4 }}
       </li>
+      {% endif %}
+      {% if response.drinks.0.strMeasure5 and response.drinks.0.strIngredient5 %}
       <li>
         <span class="ingredient">{{ response.drinks.0.strMeasure5 }}</span>
         {{ response.drinks.0.strIngredient5 }}
       </li>
+    {% endif %}
     </ul>
   </div>
   <div class="extra-info sans">
@@ -97,7 +113,7 @@
 
 
   <div class="green-button">
- <a href="{% url 'add_to_shopping_list' drinks.id %}" button type="submit" class="btn btn-outline-dark favButton" value="Favorite">Add to Shopping List</button> </a>
+ <a href="{% url 'add_to_shopping_list' response.drinks.0.idDrink %}" button type="submit" class="btn btn-outline-dark favButton" value="Favorite">Add to Shopping List</button> </a>
 
   
 {% endblock %}

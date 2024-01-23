@@ -94,15 +94,16 @@ def login_view(request):
 # we want to do this without displaying a form ask Tylus (fieldset)
 # add to Shopping List
 def add_to_shopping_list(request, drink_id):
+    drink_id = drink_id
     model = Shopping_list
     user = request.user
-    Shopping_list.objects.create('user': user , 'drink_id': drink_id)
+    Shopping_list.objects.create({'user': user , 'drink_id': drink_id})
     return render(request, 'shopping_list.html')
 
 # ShoppingList Details
 class ShoppingList(ListView):
     model = Shopping_list
-    template_name = '/shopping_list.html'
+    template_name = 'shopping_list.html'
 
 # Delete from ShoppinList
 class delete_from_shopping_list(DeleteView):

@@ -12,6 +12,6 @@ urlpatterns = [
   path('show/<int:id_drink>', views.show_page, name='show'),
   path('random/', views.random_index, name='random'),
   path('add_to_shopping_list/<str:ingredient_name>/', views.ShoppingList.as_view(), name='add_to_shopping_list'),
-  path('ShoppingList/', views.ShoppingList, name ='ShoppingList'),
-  path('delete_from_shopping_list/<int:ingredient_id>/', views.delete_from_shopping_list, name='delete_from_shopping_list')
+  path('ShoppingList/', views.ShoppingList.as_view(), name ='ShoppingList'),
+  path('delete_from_shopping_list/<int:ingredient_id>/', views.delete_from_shopping_list.as_view(), name='delete_from_shopping_list')
 ]
