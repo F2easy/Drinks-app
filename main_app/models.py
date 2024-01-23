@@ -19,12 +19,12 @@ class ShoppingGuide(models.Model):
     ingredient_7 = models.CharField(max_length=255, blank=True)
     ingredient_8 = models.CharField(max_length=255, blank=True)
     ingredient_9 = models.CharField(max_length=255, blank=True)
-    ingredient_10= models.CharField(max_length=255, blank=True)
-    ingredient_11= models.CharField(max_length=255, blank=True)
-    ingredient_12= models.CharField(max_length=255, blank=True)
-    ingredient_13= models.CharField(max_length=255, blank=True)
-    ingredient_14= models.CharField(max_length=255, blank=True)
-    ingredient_15= models.CharField(max_length=255, blank=True)
+    ingredient_10 = models.CharField(max_length=255, blank=True)
+    ingredient_11 = models.CharField(max_length=255, blank=True)
+    ingredient_12 = models.CharField(max_length=255, blank=True)
+    ingredient_13 = models.CharField(max_length=255, blank=True)
+    ingredient_14 = models.CharField(max_length=255, blank=True)
+    ingredient_15 = models.CharField(max_length=255, blank=True)
     
     def __str__(self):
         return f'{self.name} ({self.id})'
