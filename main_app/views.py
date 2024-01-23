@@ -1,13 +1,15 @@
-from django.shortcuts import render, redirect,  get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
-from .models import Shopping_list
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import ListView
-import requests
 import os
-
+import uuid
+import boto3
+from django.shortcuts import render, redirect,  get_object_or_404
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import ShoppingList
+import requests
 # Variables
 
 api = os.environ['APIKEY']
@@ -93,6 +95,7 @@ def login_view(request):
 
 # we want to do this without displaying a form ask Tylus (fieldset)
 # add to Shopping List
+@login_required
 def add_to_shopping_list(request, drink_id):
     drink_id = drink_id
     model = Shopping_list
@@ -101,11 +104,13 @@ def add_to_shopping_list(request, drink_id):
     return render(request, 'shopping_list.html')
 
 # ShoppingList Details
+@login_required
 class ShoppingList(ListView):
     model = Shopping_list
     template_name = 'shopping_list.html'
 
 # Delete from ShoppinList
+@login_required
 class delete_from_shopping_list(DeleteView):
     model = Shopping_list
     success_urls = '/shopping_list'

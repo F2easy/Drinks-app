@@ -8,12 +8,3 @@ body {
 main {
   flex: 1 0 auto;
 }
-
-.ingredients {
-  font-size: 20px;
-  font-family: "arial", Sans-serif
-
-}
-.ingredient{
-  margin-right: 10px
-}

@@ -1,18 +1,15 @@
 from django.db import models
+from django.urls import reverse
+from datetime import date
 from django.contrib.auth.models import User
 
 # Create your models here.
 
-class User(models.Model):
-    username = models.CharField(max_length=10)
-    password = models.CharField(max_length=10)
-
-
-class Shopping_list(models.Model):
+class ShoppingList(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    drink_name = models.CharField(max_length=30)
     drink_id = models.CharField(max_length=20)
-    drinkImage = models.CharField(max_length=255)
-    ingredient_name = models.CharField(max_length=255)
+    drink_image = models.CharField(max_length=255)
     ingredient_1 = models.CharField(max_length=255)
     ingredient_2 = models.CharField(max_length=255)
     ingredient_3 = models.CharField(max_length=255)
@@ -28,3 +25,9 @@ class Shopping_list(models.Model):
     ingredient_13= models.CharField(max_length=255)
     ingredient_14= models.CharField(max_length=255)
     ingredient_15= models.CharField(max_length=255)
+    
+    def __str__(self):
+        return f'{self.name} ({self.id})'
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'list_id': self.id})
