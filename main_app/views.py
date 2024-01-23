@@ -8,7 +8,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import ShoppingList
+from .models import ShoppingGuide
 import requests
 # Variables
 
@@ -71,48 +71,44 @@ def show_page(request, id_drink):
 
 
 
-def registration(request, user):
-    pass
 
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            messages.success(request, 'Login successful.')
-            return redirect('home.html') 
-        else:
-            messages.error(request, 'Invalid username or password.')
-
-    return render(request, 'user/login.html') 
 
 # Shopping list Views
 
+class ShoppingGuideCreate(CreateView):
+    model = ShoppingGuide
+    fields = '__all__'
+    
+class ShoppingGuideList(ListView):
+    model = ShoppingGuide
 
-# we want to do this without displaying a form ask Tylus (fieldset)
-# add to Shopping List
-@login_required
-def add_to_shopping_list(request, drink_id):
-    drink_id = drink_id
-    model = Shopping_list
-    user = request.user
-    Shopping_list.objects.create({'user': user , 'drink_id': drink_id})
-    return render(request, 'shopping_list.html')
+class ShoppingGuideDetail(DetailView):
+    model = ShoppingGuide
 
-# ShoppingList Details
-@login_required
-class ShoppingList(ListView):
-    model = Shopping_list
-    template_name = 'shopping_list.html'
+class ShoppingGuideUpdate(UpdateView):
+    model = ShoppingGuide
+    #Change this!
+    fields = ['name', 'color']
 
-# Delete from ShoppinList
-@login_required
-class delete_from_shopping_list(DeleteView):
-    model = Shopping_list
-    success_urls = '/shopping_list'
+class ShoppingGuideDelete(DeleteView):
+    model = ShoppingGuide
+    success_url = 'shopping_guide/'
 
-## class ListDetail(DetailView)
+    
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+    if form.is_valid():
+        # Save the user to the db
+        user = form.save()
+        # Automatically log in the new user
+        login(request, user)
+        return redirect('index')
+    else:
+        error_message = 'Invalid sign up - try again'
+    # A bad POST or a GET request, so render signup template
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
