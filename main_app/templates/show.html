@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
-{% extends 'base.html' %}
-{% block content %}
 <style>
   .drink-details {
     text-align: center;
@@ -49,7 +46,6 @@
   .green-button {
     align-items: right;
     right: 25%
-
   }
 
 
@@ -96,11 +92,8 @@
 
 
   <div class="green-button">
- <a href="{% url 'add_to_shopping_list' drinks.id %}" button type="submit" class="btn btn-outline-dark favButton" value="Favorite">Add to Shopping List</button> </a>
- <a href="{% url 'add_to_shopping_list' response.drinks.0.idDrink %}" button type="submit" class="btn btn-outline-dark favButton" value="Favorite">Add to Shopping List</button> </a>
-
-
-{% endblock %}
+    <a href="{% url 'shopping_create'  %}" button type="submit" class="btn btn-outline-dark favButton" value="Favorite">Add to Shopping List</button></a>
+    <a href="{% url 'shopping_create'  %}" button type="submit" class="btn btn-outline-dark favButton" value="Favorite">Add to Shopping List</button></a>
 
 
 {% endblock %}
