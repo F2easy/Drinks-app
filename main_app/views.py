@@ -58,7 +58,7 @@ def drinks_index(request):
     drinks = response.json()['drinks']
     return render(request, 'index.html', {'drinks':drinks})
 
-
+@login_required
 def show_page(request, id_drink):
     ing_arr = []
     url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}{id_drink}'
@@ -72,22 +72,22 @@ def show_page(request, id_drink):
 
 # Shopping list Views
 
-class ShoppingGuideCreate(CreateView):
+class ShoppingGuideCreate(LoginRequiredMixin, CreateView):
     model = ShoppingGuide
     fields = '__all__'
     
-class ShoppingGuideList(ListView):
+class ShoppingGuideList(LoginRequiredMixin, ListView):
     model = ShoppingGuide
 
-class ShoppingGuideDetail(DetailView):
+class ShoppingGuideDetail(LoginRequiredMixin, DetailView):
     model = ShoppingGuide
 
-class ShoppingGuideUpdate(UpdateView):
+class ShoppingGuideUpdate(LoginRequiredMixin, UpdateView):
     model = ShoppingGuide
     #Change this!
     fields = ['name', 'color']
 
-class ShoppingGuideDelete(DeleteView):
+class ShoppingGuideDelete(LoginRequiredMixin, DeleteView):
     model = ShoppingGuide
     success_url = 'shopping_guide/'
 

@@ -25,12 +25,9 @@ class ShoppingGuide(models.Model):
     ingredient_13= models.CharField(max_length=255)
     ingredient_14= models.CharField(max_length=255)
     ingredient_15= models.CharField(max_length=255)
-<<<<<<< HEAD
-=======
     
     def __str__(self):
         return f'{self.name} ({self.id})'
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'list_id': self.id})
->>>>>>> f17f994500897d4c0718291fc45315af480c986b
