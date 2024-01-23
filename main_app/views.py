@@ -1,9 +1,15 @@
+import os
+import uuid
+import boto3
 from django.shortcuts import render, redirect,  get_object_or_404
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import ShoppingList
 import requests
-import os
-
 # Variables
 
 api = os.environ['APIKEY']
@@ -54,26 +60,59 @@ def drinks_index(request):
 
 
 def show_page(request, id_drink):
+    ing_arr = []
     url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}{id_drink}'
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
     response = response.json()
+    drinks = filter(lambda drink: drink, response['drinks'])
+    return render(request, 'show.html', {'response': response, 'api': api, 'drinks': drinks})
 
-    return render(request, 'show.html', {'response': response, 'api': api})
 
 
-def add_to_shopping_list(request, ingredient_name):
+def registration(request, user):
+    pass
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Login successful.')
+            return redirect('home.html') 
+        else:
+            messages.error(request, 'Invalid username or password.')
+
+    return render(request, 'user/login.html') 
+
+# Shopping list Views
+
+
+# we want to do this without displaying a form ask Tylus (fieldset)
+# add to Shopping List
+@login_required
+def add_to_shopping_list(request, drink_id):
+    drink_id = drink_id
+    model = Shopping_list
     user = request.user
-    ShoppingList.objects.create(user=user, ingredient_name=ingredient_name)
-    return render(request, 'show.html')
+    Shopping_list.objects.create({'user': user , 'drink_id': drink_id})
+    return render(request, 'shopping_list.html')
 
+# ShoppingList Details
+@login_required
+class ShoppingList(ListView):
+    model = Shopping_list
+    template_name = 'shopping_list.html'
 
-def ShoppingList(request):
-    return render(request, 'ShoppingList.html')
+# Delete from ShoppinList
+@login_required
+class delete_from_shopping_list(DeleteView):
+    model = Shopping_list
+    success_urls = '/shopping_list'
 
-
-def delete_from_shopping_list(request, ingredient_id):
-    shopping_list_entry =  get_object_or_404(ShoppingList, ingredient_id=ingredient_id, user=request.user)
-    shopping_list_entry.delete()
-    return redirect(request, 'ShoppingList.html')
+## class ListDetail(DetailView)
