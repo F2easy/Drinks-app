@@ -75,7 +75,7 @@ def show_page(request, id_drink):
 class ShoppingGuideCreate(CreateView):
     model = ShoppingGuide
     fields = '__all__'
-    
+
 class ShoppingGuideList(ListView):
     model = ShoppingGuide
 
