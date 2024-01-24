@@ -61,8 +61,16 @@
                     </li>
                 </ul>
                 <ul class="right">
-                    <li><a href="{% url 'random' %}">Random</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'random' %}">Random</a></li>
+                    {% if user.is_authenticated %}
+                    <!--more urls here?-->
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}"> Login</a></li>
+                    <li><a href="{% url 'signup' %}">Signup</a></li>
+                    {% endif %}
+
                 </ul>
             </div>
         </nav>

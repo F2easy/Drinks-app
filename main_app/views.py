@@ -83,6 +83,7 @@ def show_page(request, id_drink):
 #     fields = ['name', 'drink_id', 'drink_image', 'ingredient_1', 'ingredient_2', 'ingredient_3', 'ingredient_4', 'ingredient_5', 'ingredient_6', 'ingredient_7', 'ingredient_8', 'ingredient_9', 'ingredient_10', 'ingredient_11', 'ingredient_12', 'ingredient_13', 'ingredient_14', 'ingredient_15']
 #     success_url = 'shopping_guide/'
 
+
     def form_valid(self, form):
         # self.request.user is the logged in user
         form.instance.user = self.request.user
@@ -93,15 +94,15 @@ def show_page(request, id_drink):
 class ShoppingGuideList(ListView):
     model = ShoppingGuide
 
-class ShoppingGuideDetail(DetailView):
+class ShoppingGuideDetail(LoginRequiredMixin, DetailView):
     model = ShoppingGuide
 
-class ShoppingGuideUpdate(UpdateView):
+class ShoppingGuideUpdate(LoginRequiredMixin, UpdateView):
     model = ShoppingGuide
     #Change this!
     fields = ['name', 'color']
 
-class ShoppingGuideDelete(DeleteView):
+class ShoppingGuideDelete(LoginRequiredMixin, DeleteView):
     model = ShoppingGuide
     success_url = '/shopping_guide'
 
@@ -110,12 +111,12 @@ def signup(request):
     error_message = ''
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
-    if form.is_valid():
+        if form.is_valid():
         # Save the user to the db
-        user = form.save()
+             user = form.save()
         # Automatically log in the new user
         login(request, user)
-        return redirect('index')
+        return redirect('random')
     else:
         error_message = 'Invalid sign up - try again'
     # A bad POST or a GET request, so render signup template
