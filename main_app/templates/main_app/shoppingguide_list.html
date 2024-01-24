@@ -115,7 +115,7 @@
                     <span class="ingredient">{{ drink.strIngredient15 }}</span>
                 </li>
                 {% endif %}
-          <a class="btn red" href="{% url 'shopping_delete' %}">Delete</a>
+          <a class="btn red" href="{% url 'shopping_delete' drink.id %}">Delete</a>
             </ul>
         </div>
     </div>
