@@ -104,7 +104,8 @@ class ShoppingGuideDetail(LoginRequiredMixin, DetailView):
 class ShoppingGuideUpdate(LoginRequiredMixin, UpdateView):
     model = ShoppingGuide
     #Change this!
-    fields = ['name', 'color']
+    fields = ['name', 'drink_id', 'drink_image', 'strIngredient1', 'strIngredient2', 'strIngredient3', 'strIngredient4', 'strIngredient5', 'strIngredient6', 'strIngredient7', 'strIngredient8', 'strIngredient9', 'strIngredient10', 'strIngredient11', 'strIngredient12', 'strIngredient13', 'strIngredient14', 'strIngredient15']
+    success_url = '/shopping_guide'
 
 class ShoppingGuideDelete(LoginRequiredMixin, DeleteView):
     model = ShoppingGuide

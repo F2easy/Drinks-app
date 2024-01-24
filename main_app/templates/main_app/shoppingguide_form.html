@@ -1,29 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="sans">Add to the List</h1>
-    <h1 class="sans">{{ ShoppingGuide.ingredient_1 }}</h1>
 
-  <form action="" method="post">
-    {% csrf_token %}
-    <input hidden type="text" name="name" value="{{ ShoppingGuide.name }}">
-    <input hidden type="text" name="drink_id" value="{{ ShoppingGuide.drink_id }}">
-    <input hidden type="text" name="drink_image" value="{{ ShoppingGuide.drink_image }}">
-    <input hidden type="text" name="ingredient_1" value="{{ ShoppingGuide.ingredient_1 }}">
-    <input hidden type="text" name="ingredient_2" value="{{ ShoppingGuide.ingredient_2 }}">
-    <input hidden type="text" name="ingredient_3" value="{{ ShoppingGuide.ingredient_3 }}">
-    <input hidden type="text" name="ingredient_4" value="{{ ShoppingGuide.ingredient_4 }}">
-    <input hidden type="text" name="ingredient_5" value="{{ ShoppingGuide.ingredient_5 }}">
-    <input hidden type="text" name="ingredient_6" value="{{ ShoppingGuide.ingredient_6 }}">
-    <input hidden type="text" name="ingredient_7" value="{{ ShoppingGuide.ingredient_7 }}">
-    <input hidden type="text" name="ingredient_8" value="{{ ShoppingGuide.ingredient_8 }}">
-    <input hidden type="text" name="ingredient_9" value="{{ ShoppingGuide.ingredient_9 }}">
-    <input hidden type="text" name="ingredient_10" value="{{ ShoppingGuide.ingredient_10 }}">
-    <input hidden type="text" name="ingredient_11" value="{{ ShoppingGuide.ingredient_11 }}">
-    <input hidden type="text" name="ingredient_12" value="{{ ShoppingGuide.ingredient_12 }}">
-    <input hidden type="text" name="ingredient_13" value="{{ ShoppingGuide.ingredient_13 }}">
-    <input hidden type="text" name="ingredient_14" value="{{ ShoppingGuide.ingredient_14 }}">
-    <input hidden type="text" name="ingredient_15" value="{{ ShoppingGuide.ingredient_15 }}">
-    <input type="submit" value="Submit!" class="btn">
-  </form>
+{% if object %}
+  <h1>Edit <span class="teal-text">{{ object.name }}</span></h1>
+{% else %}
+  <h1>Change Drink</h1>
+{% endif %}
+
+
+<!-- Leaving the action empty makes the form post to the same url used to display it -->
+<form action="" method="POST">
+  <!-- Django requires the following for security purposes -->
+  {% csrf_token %}
+  <table>
+    <!-- Render the inputs inside of <tr>s & <td>s -->
+    {{ form.as_table }}
+  </table>
+  <input type="submit" value="Submit!" class="btn">
+</form>
+
 {% endblock %}
