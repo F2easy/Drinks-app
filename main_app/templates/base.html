@@ -34,7 +34,7 @@
             font: bold;
             color: rgb(130, 175, 171);
         }
-        p.sans, h5.sans, div.sans, h1.sans, span.sans{
+        p.sans, h5.sans, div.sans, h1.sans, span.sans, h4.sans{
             font-family: "arial", Sans-serif;
             font: bold;
         }
@@ -64,6 +64,7 @@
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'random' %}">Random</a></li>
                     {% if user.is_authenticated %}
+                    <li><a href="{% url 'shopping_index' %}">Custom Drinks</a></li>
                         <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
                         <li><a href="{% url 'login' %}"> Login</a></li>
