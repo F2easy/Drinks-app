@@ -5,10 +5,11 @@
 .card {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    margin-bottom: 20px;
+    width: calc(33.33% - 20px); 
+    margin-bottom: 30px; 
     background-color: white;
-    padding: 10px;
+    padding: 20px;
+   
 }
 
 .card-title {
@@ -22,106 +23,109 @@
 }
 
 .drink-image {
-  width: 150px; /* Adjust the width as needed */
+    width: 150px; 
 }
 
+.card-wrapper {
+    display: flex;
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+}
 </style>
-
-
-
 
 <h1>Shopping List</h1>
 
-{% for drink in drinks %}
-    <div class="card">
-        <div class="card-content">
-            <span class="card-title">
-                Needed For <span style="color: {{ drink.name }}">{{ drink.name }}</span> 
-            </span>
-            <img src="{{ drink.drink_image }}" class="drink-image">
-            <ul>
-                {% if drink.strIngredient1 and drink.strIngredient1 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient1 }}</span>
-                </li>
-                {% endif %}
-                {% if drink.strIngredient2 and drink.strIngredient2 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient2 }}</span>
-                </li>
-                {% endif %}
-                {% if drink.strIngredient3 and drink.strIngredient3 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient3 }}</span>
-                </li>
-                {% endif %} 
-                {% if drink.strIngredient4 and drink.strIngredient4 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient4 }}</span>
-                </li>
-                {% endif %} 
-                {% if drink.strIngredient5 and drink.strIngredient5 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient5 }}</span>
-                </li>
-                {% endif %}
-                {% if drink.strIngredient6 and drink.strIngredient6 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient6 }}</span>
-                </li>
-                {% endif %}
-                {% if drink.strIngredient7 and drink.strIngredient7 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient7 }}</span>
-                </li>
-                {% endif %}
-                {% if drink.strIngredient8 and drink.strIngredient8 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient8 }}</span>
-                </li>
-                {% endif %}
-                {% if drink.strIngredient9 and drink.strIngredient9 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient9 }}</span>
-                </li>
-                {% endif %}
-                {% if drink.strIngredient10 and drink.strIngredient10 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient10 }}</span>
-                </li>
-                {% endif %}
-                {% if drink.strIngredient11 and drink.strIngredient11 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient11 }}</span>
-                </li>
-                {% endif %}
-                {% if drink.strIngredient12 and drink.strIngredient12 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient12 }}</span>
-                </li>
-                {% endif %}
-                {% if drink.strIngredient13 and drink.strIngredient13 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient13 }}</span>
-                </li>
-                {% endif %}
-                {% if drink.strIngredient14 and drink.strIngredient14 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient14 }}</span>
-                </li>
-                {% endif %}
-                {% if drink.strIngredient15 and drink.strIngredient15 != "None" %}
-                <li>
-                    <span class="ingredient">{{ drink.strIngredient15 }}</span>
-                </li>
-                {% endif %}
-            <a class="btn red" href="{% url 'shopping_delete' drink.id %}">Delete</a>
-            <a class="btn blue" href="{% url 'shopping_update' drink.id %}">Update</a>
-            </ul>
-        </div>
-    </div>
+<div class="card-wrapper">
+  {% for drink in drinks %}
+  <div class="card">
+      <div class="card-content">
+          <span class="card-title">
+              Needed For <span style="color: {{ drink.name }}">{{ drink.name }}</span> 
+          </span>
+          <img src="{{ drink.drink_image }}" class="drink-image">
+          <ul>
+              {% if drink.strIngredient1 and drink.strIngredient1 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient1 }}</span>
+              </li>
+              {% endif %}
+              {% if drink.strIngredient2 and drink.strIngredient2 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient2 }}</span>
+              </li>
+              {% endif %}
+              {% if drink.strIngredient3 and drink.strIngredient3 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient3 }}</span>
+              </li>
+              {% endif %} 
+              {% if drink.strIngredient4 and drink.strIngredient4 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient4 }}</span>
+              </li>
+              {% endif %} 
+              {% if drink.strIngredient5 and drink.strIngredient5 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient5 }}</span>
+              </li>
+              {% endif %}
+              {% if drink.strIngredient6 and drink.strIngredient6 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient6 }}</span>
+              </li>
+              {% endif %}
+              {% if drink.strIngredient7 and drink.strIngredient7 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient7 }}</span>
+              </li>
+              {% endif %}
+              {% if drink.strIngredient8 and drink.strIngredient8 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient8 }}</span>
+              </li>
+              {% endif %}
+              {% if drink.strIngredient9 and drink.strIngredient9 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient9 }}</span>
+              </li>
+              {% endif %}
+              {% if drink.strIngredient10 and drink.strIngredient10 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient10 }}</span>
+              </li>
+              {% endif %}
+              {% if drink.strIngredient11 and drink.strIngredient11 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient11 }}</span>
+              </li>
+              {% endif %}
+              {% if drink.strIngredient12 and drink.strIngredient12 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient12 }}</span>
+              </li>
+              {% endif %}
+              {% if drink.strIngredient13 and drink.strIngredient13 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient13 }}</span>
+              </li>
+              {% endif %}
+              {% if drink.strIngredient14 and drink.strIngredient14 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient14 }}</span>
+              </li>
+              {% endif %}
+              {% if drink.strIngredient15 and drink.strIngredient15 != "None" %}
+              <li>
+                  <span class="ingredient sans">{{ drink.strIngredient15 }}</span>
+              </li>
+              {% endif %}
+          </ul>
+          <a class="btn red sans" href="{% url 'shopping_delete' drink.id %}">Delete</a>
+          <a class="btn blue sans" href="{% url 'shopping_update' drink.id %}">Update</a>
+      </div>
+  </div>
+  {% endfor %}
+</div>
 
-
-
-{% endfor %}
 {% endblock %}
