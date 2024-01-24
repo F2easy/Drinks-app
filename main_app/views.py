@@ -82,14 +82,18 @@ def show_page(request, id_drink):
 #     model = ShoppingGuide
 #     fields = ['name', 'drink_id', 'drink_image', 'ingredient_1', 'ingredient_2', 'ingredient_3', 'ingredient_4', 'ingredient_5', 'ingredient_6', 'ingredient_7', 'ingredient_8', 'ingredient_9', 'ingredient_10', 'ingredient_11', 'ingredient_12', 'ingredient_13', 'ingredient_14', 'ingredient_15']
 #     success_url = 'shopping_guide/'
+    # def form_valid(self, form):
+    #     # self.request.user is the logged in user
+    #     form.instance.user = self.request.user
+    #     # Let the CreateView's form_valid method
+    #     # do its regular work (saving the object & redirecting)
+    #     return super().form_valid(form)
 
+@login_required
+def ShoppingGuide_index(request):
+    drinks = ShoppingGuide.objects.filter(user=request.user)
+    return render(request, 'main_app/shoppingguide_list.html', {'drinks': drinks})
 
-    def form_valid(self, form):
-        # self.request.user is the logged in user
-        form.instance.user = self.request.user
-        # Let the CreateView's form_valid method
-        # do its regular work (saving the object & redirecting)
-        return super().form_valid(form)
 
 class ShoppingGuideList(ListView):
     model = ShoppingGuide
@@ -112,14 +116,14 @@ def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-        # Save the user to the db
-             user = form.save()
-        # Automatically log in the new user
-        login(request, user)
-        return redirect('random')
-    else:
-        error_message = 'Invalid sign up - try again'
-    # A bad POST or a GET request, so render signup template
+            # Save the user to the db
+            user = form.save()
+            # Automatically log in the new user
+            login(request, user)
+            return redirect('home')
+        else:
+            error_message = 'Invalid sign up - try again'
+        # A bad POST or a GET request, so render signup template
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
