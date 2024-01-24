@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+
+
+<h1>Drink List</h1>
+
+
+</style>
+<div class="drink-details">
+  <h1>{{ drink.ingredient_1 }}</h1>
+  <img src="{{ drink.image }}" class="drink-image" alt="Drink Image">
+  <div class="ingredients sans">
+    <h3>Ingredients:</h3>
+    <ul>
+      {% if drink.ingredient_1 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_1 }}</span>
+      </li>
+      {% endif %}
+      {% if drink.ingredient_2 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_2}}</span>
+      </li>
+      {% endif %}
+      {% if drink.ingredient_3 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_3}}</span>
+      </li>
+      {% endif %} 
+      {% if drink.ingredient_4 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_4}}</span>
+      </li>
+      {% endif %} 
+      {% if drink.ingredient_5 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_5}}</span>
+      </li>
+      {% endif %}
+      {% if drink.ingredient_6 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_6}}</span>
+      </li>
+      {% endif %}
+      {% if drink.ingredient_7 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_7}}</span>
+      </li>
+      {% endif %}
+      {% if drink.ingredient_8 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_8}}</span>
+      </li>{
+        % endif %}
+        {% if drink.ingredient_9 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_9}}</span>
+      </li>
+      {% endif %}
+      {% if drink.ingredient_10 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_10}}</span>
+      </li>
+      {% endif %}
+      {% if drink.ingredient_11 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_11}}</span>
+      </li>
+      {% endif %}
+      {% if drink.ingredient_12 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_12}}</span>
+      </li>
+      {% endif %}
+      {% if drink.ingredient_13 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_13}}</span>
+      </li>
+      {% endif %}
+      {% if drink.ingredient_14 %}
+      <li>
+        <span class="ingredient">{{ drink.ingredient_14}}</span>
+      </li>
+      {% endif %}
+      {% if drink.ingredient_15 %}
+      <li>
+      <span class="ingredient">{{ drink.ingredient_15}}</span>
+      {% endif %}
+    </li>
+    <div class="col s6">
+      <div class="card hoverable">
+        <div class="card-content">
+          <span class="card-title"><strong>{{ drink.name }}</strong></span>
+          <p><strong>Name:</strong> {{ drink.name }}</p>
+        </div>
+        <div class="card-action">
+          <a class="btn" href="{% url 'shopping_delete' drink.id %}">Update</a>
+          <a class="btn red" href="{% url 'shopping_delete' drink.id %}">Delete</a>
+        </div>
+      </div>
+</div>
+{% endif %}
+
+
+
+
+
+
+
+{% endblock %}

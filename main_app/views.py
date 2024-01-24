@@ -1,16 +1,22 @@
 import os
 import uuid
 import boto3
+from django.http import HttpResponse
 from django.shortcuts import render, redirect,  get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from main_app.forms.forms import ShoppingGuideForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import ShoppingGuide
 import requests
+# from .forms import MyForm
+
+
 # Variables
+
 
 api = os.environ['APIKEY']
 random_10 = '/randomselection.php'
@@ -72,10 +78,31 @@ def show_page(request, id_drink):
 
 # Shopping list Views
 
+<<<<<<< HEAD
 class ShoppingGuideCreate(LoginRequiredMixin, CreateView):
     model = ShoppingGuide
     fields = '__all__'
     
+=======
+
+
+
+
+
+
+class ShoppingGuideCreate(CreateView):
+    model = ShoppingGuide
+    fields = ['name', 'drink_id', 'drink_image', 'ingredient_1', 'ingredient_2', 'ingredient_3', 'ingredient_4', 'ingredient_5', 'ingredient_6', 'ingredient_7', 'ingredient_8', 'ingredient_9', 'ingredient_10', 'ingredient_11', 'ingredient_12', 'ingredient_13', 'ingredient_14', 'ingredient_15']
+    success_url = '/'
+
+    def form_valid(self, form):
+        # self.request.user is the logged in user
+        form.instance.user = self.request.user
+        # Let the CreateView's form_valid method
+        # do its regular work (saving the object & redirecting)
+        return super().form_valid(form)
+
+>>>>>>> a935e6959c42a3226606e700c787def4af1068eb
 class ShoppingGuideList(ListView):
     model = ShoppingGuide
 
@@ -108,3 +135,25 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+
+def create_shopping_guide(request):
+    if request.method == 'POST':
+        form = ShoppingGuideForm(request.POST)
+        if form.is_valid():
+            # Save the user to the db
+            form.save()
+        else:
+            print(form.errors)
+    return redirect('/')
+
+
+# def my_view(request):
+#     if request.method == 'POST':
+#         form = MyForm(request.POST)
+#         if form.is_valid():
+#             # Process form data...
+#             return HttpResponseRedirect('/success/')
+#     else:
+#         form = MyForm()
+#     return render(request, 'my_template.html', {'form': form})
