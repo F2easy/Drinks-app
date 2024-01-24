@@ -78,12 +78,6 @@ def show_page(request, id_drink):
 
 # Shopping list Views
 
-
-
-
-
-
-
 class ShoppingGuideCreate(CreateView):
     model = ShoppingGuide
     fields = ['name', 'drink_id', 'drink_image', 'ingredient_1', 'ingredient_2', 'ingredient_3', 'ingredient_4', 'ingredient_5', 'ingredient_6', 'ingredient_7', 'ingredient_8', 'ingredient_9', 'ingredient_10', 'ingredient_11', 'ingredient_12', 'ingredient_13', 'ingredient_14', 'ingredient_15']
@@ -134,19 +128,7 @@ def create_shopping_guide(request):
     if request.method == 'POST':
         form = ShoppingGuideForm(request.POST)
         if form.is_valid():
-            # Save the user to the db
             form.save()
         else:
             print(form.errors)
     return redirect('/')
-
-
-# def my_view(request):
-#     if request.method == 'POST':
-#         form = MyForm(request.POST)
-#         if form.is_valid():
-#             # Process form data...
-#             return HttpResponseRedirect('/success/')
-#     else:
-#         form = MyForm()
-#     return render(request, 'my_template.html', {'form': form})
