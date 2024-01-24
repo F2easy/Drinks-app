@@ -78,18 +78,12 @@ def show_page(request, id_drink):
 
 # Shopping list Views
 
-<<<<<<< HEAD
+@login_required
 class ShoppingGuideCreate(LoginRequiredMixin, CreateView):
     model = ShoppingGuide
     fields = '__all__'
     
-=======
-
-
-
-
-
-
+@login_required
 class ShoppingGuideCreate(CreateView):
     model = ShoppingGuide
     fields = ['name', 'drink_id', 'drink_image', 'ingredient_1', 'ingredient_2', 'ingredient_3', 'ingredient_4', 'ingredient_5', 'ingredient_6', 'ingredient_7', 'ingredient_8', 'ingredient_9', 'ingredient_10', 'ingredient_11', 'ingredient_12', 'ingredient_13', 'ingredient_14', 'ingredient_15']
@@ -102,7 +96,6 @@ class ShoppingGuideCreate(CreateView):
         # do its regular work (saving the object & redirecting)
         return super().form_valid(form)
 
->>>>>>> a935e6959c42a3226606e700c787def4af1068eb
 class ShoppingGuideList(ListView):
     model = ShoppingGuide
 
@@ -123,12 +116,12 @@ def signup(request):
     error_message = ''
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
-    if form.is_valid():
+        if form.is_valid():
         # Save the user to the db
-        user = form.save()
+             user = form.save()
         # Automatically log in the new user
         login(request, user)
-        return redirect('index')
+        return redirect('random')
     else:
         error_message = 'Invalid sign up - try again'
     # A bad POST or a GET request, so render signup template
@@ -136,7 +129,7 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-
+@login_required
 def create_shopping_guide(request):
     if request.method == 'POST':
         form = ShoppingGuideForm(request.POST)
