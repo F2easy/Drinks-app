@@ -11,7 +11,7 @@ urlpatterns = [
   path('shopping_guide/', views.ShoppingGuideList.as_view(), name='shopping_index'),
   path('shopping_guide/<int:pk>/', views.ShoppingGuideDetail.as_view(), name='shopping_detail'),
   path('shopping_guide/<int:pk>/update/', views.ShoppingGuideUpdate.as_view(), name='shopping_update'),
-  # path('shopping_guide/create/', views.ShoppingGuideCreate.as_view(), name='shopping_create'),
+
 
   path('shopping_guide/create/', views.create_shopping_guide, name='shopping_create'),
 
