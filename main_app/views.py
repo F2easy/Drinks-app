@@ -78,10 +78,10 @@ def show_page(request, id_drink):
 
 # Shopping list Views
 
-class ShoppingGuideCreate(CreateView):
-    model = ShoppingGuide
-    fields = ['name', 'drink_id', 'drink_image', 'ingredient_1', 'ingredient_2', 'ingredient_3', 'ingredient_4', 'ingredient_5', 'ingredient_6', 'ingredient_7', 'ingredient_8', 'ingredient_9', 'ingredient_10', 'ingredient_11', 'ingredient_12', 'ingredient_13', 'ingredient_14', 'ingredient_15']
-    success_url = '/'
+# class ShoppingGuideCreate(CreateView):
+#     model = ShoppingGuide
+#     fields = ['name', 'drink_id', 'drink_image', 'ingredient_1', 'ingredient_2', 'ingredient_3', 'ingredient_4', 'ingredient_5', 'ingredient_6', 'ingredient_7', 'ingredient_8', 'ingredient_9', 'ingredient_10', 'ingredient_11', 'ingredient_12', 'ingredient_13', 'ingredient_14', 'ingredient_15']
+#     success_url = 'shopping_guide/'
 
     def form_valid(self, form):
         # self.request.user is the logged in user
@@ -103,7 +103,7 @@ class ShoppingGuideUpdate(UpdateView):
 
 class ShoppingGuideDelete(DeleteView):
     model = ShoppingGuide
-    success_url = 'shopping_guide/'
+    success_url = '/shopping_guide'
 
     
 def signup(request):
@@ -131,4 +131,4 @@ def create_shopping_guide(request):
             form.save()
         else:
             print(form.errors)
-    return redirect('/')
+    return redirect('/shopping_guide')
