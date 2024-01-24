@@ -52,96 +52,96 @@
 <div class="drink-details">
   <h1>{{ response.drinks.0.strDrink }}</h1>
   <img src="{{ response.drinks.0.strDrinkThumb }}" class="drink-image" alt="Drink Image">
-  <div class="ingredients sans">
+  <div class="ingredients">
     <h3>Ingredients:</h3>
     <ul>
       {% if response.drinks.0.strMeasure1 and response.drinks.0.strIngredient1 %}
       <li>
-        <span class="ingredient">{{ response.drinks.0.strMeasure1 }}</span>
+        <span class="ingredient sans">{{ response.drinks.0.strMeasure1 }}</span>
         {{ response.drinks.0.strIngredient1 }}
       </li>
       {% endif %}
       {% if response.drinks.0.strMeasure2 and response.drinks.0.strIngredient2 %}
       <li>
-        <span class="ingredient">{{ response.drinks.0.strMeasure2 }}</span>
+        <span class="ingredient sans">{{ response.drinks.0.strMeasure2 }}</span>
         {{ response.drinks.0.strIngredient2 }}
       </li>
       {% endif %}
       {% if response.drinks.0.strMeasure3 and response.drinks.0.strIngredient3 %}
       <li>
-        <span class="ingredient">{{ response.drinks.0.strMeasure3 }}</span>
+        <span class="ingredient sans">{{ response.drinks.0.strMeasure3 }}</span>
         {{ response.drinks.0.strIngredient3 }}
       </li>
       {% endif %}
       {% if response.drinks.0.strMeasure4 and response.drinks.0.strIngredient4 %}
       <li>
-        <span class="ingredient">{{ response.drinks.0.strMeasure4 }}</span>
+        <span class="ingredient sans">{{ response.drinks.0.strMeasure4 }}</span>
         {{ response.drinks.0.strIngredient4 }}
       </li>
       {% endif %}
       {% if response.drinks.0.strMeasure5 and response.drinks.0.strIngredient5 %}
       <li>
-        <span class="ingredient">{{ response.drinks.0.strMeasure5 }}</span>
+        <span class="ingredient sans">{{ response.drinks.0.strMeasure5 }}</span>
         {{ response.drinks.0.strIngredient5 }}
       </li>
     {% endif %}
     {% if response.drinks.0.strMeasure6 and response.drinks.0.strIngredient6 %}
     <li>
-      <span class="ingredient">{{ response.drinks.0.strMeasure6 }}</span>
+      <span class="ingredient sans">{{ response.drinks.0.strMeasure6 }}</span>
       {{ response.drinks.0.strIngredient6 }}
     </li>
   {% endif %}
   {% if response.drinks.0.strMeasure7 and response.drinks.0.strIngredient7 %}
   <li>
-    <span class="ingredient">{{ response.drinks.0.strMeasure7 }}</span>
+    <span class="ingredient sans">{{ response.drinks.0.strMeasure7 }}</span>
     {{ response.drinks.0.strIngredient7 }}
   </li>
 {% endif %}
 {% if response.drinks.0.strMeasure8 and response.drinks.0.strIngredient8 %}
 <li>
-  <span class="ingredient">{{ response.drinks.0.strMeasure8 }}</span>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure8 }}</span>
   {{ response.drinks.0.strIngredient8 }}
 </li>
 {% endif %}
 {% if response.drinks.0.strMeasure9 and response.drinks.0.strIngredient9 %}
 <li>
-  <span class="ingredient">{{ response.drinks.0.strMeasure9 }}</span>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure9 }}</span>
   {{ response.drinks.0.strIngredient9 }}
 </li>
 {% endif %}
 {% if response.drinks.0.strMeasure10 and response.drinks.0.strIngredient10 %}
 <li>
-  <span class="ingredient">{{ response.drinks.0.strMeasure10 }}</span>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure10 }}</span>
   {{ response.drinks.0.strIngredient10 }}
 </li>
 {% endif %}
 {% if response.drinks.0.strMeasure11 and response.drinks.0.strIngredient11 %}
 <li>
-  <span class="ingredient">{{ response.drinks.0.strMeasure11 }}</span>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure11 }}</span>
   {{ response.drinks.0.strIngredient11 }}
 </li>
 {% endif %}
 {% if response.drinks.0.strMeasure12 and response.drinks.0.strIngredient12 %}
 <li>
-  <span class="ingredient">{{ response.drinks.0.strMeasure12 }}</span>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure12 }}</span>
   {{ response.drinks.0.strIngredient12 }}
 </li>
 {% endif %}
 {% if response.drinks.0.strMeasure13 and response.drinks.0.strIngredient13 %}
 <li>
-  <span class="ingredient">{{ response.drinks.0.strMeasure13 }}</span>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure13 }}</span>
   {{ response.drinks.0.strIngredient13 }}
 </li>
 {% endif %}
 {% if response.drinks.0.strMeasure14 and response.drinks.0.strIngredient14 %}
 <li>
-  <span class="ingredient">{{ response.drinks.0.strMeasure14 }}</span>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure14 }}</span>
   {{ response.drinks.0.strIngredient14 }}
 </li>
 {% endif %}
 {% if response.drinks.0.strMeasure15 and response.drinks.0.strIngredient15 %}
 <li>
-  <span class="ingredient">{{ response.drinks.0.strMeasure15 }}</span>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure15 }}</span>
   {{ response.drinks.0.strIngredient15 }}
 </li>
 {% endif %}
@@ -149,14 +149,14 @@
   </div>
   <div class="extra-info sans">
     <h4>Alcoholic:</h4>
-    <p>{{ response.drinks.0.strAlcoholic }}</p>
+    <p class="sans">{{ response.drinks.0.strAlcoholic }}</p>
     <h4>Category:</h4>
-    <p>{{ response.drinks.0.strCategory }}</p>
+    <p class="sans">{{ response.drinks.0.strCategory }}</p>
   </div>
 </div>
 <div class="instructions sans">
   <h3>Instructions:</h3>
-  <p>{{ response.drinks.0.strInstructions }}</p>
+  <p class="sans">{{ response.drinks.0.strInstructions }}</p>
 </div>
 
 <form class="center-align green-button" action="{% url 'shopping_create'  %}" method="POST">
