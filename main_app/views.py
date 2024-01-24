@@ -64,7 +64,7 @@ def drinks_index(request):
     drinks = response.json()['drinks']
     return render(request, 'index.html', {'drinks':drinks})
 
-@login_required
+
 def show_page(request, id_drink):
     ing_arr = []
     url = f'https://www.thecocktaildb.com/api/json/v2/{api}{drink_id}{id_drink}'
@@ -78,12 +78,12 @@ def show_page(request, id_drink):
 
 # Shopping list Views
 
-@login_required
+
 class ShoppingGuideCreate(LoginRequiredMixin, CreateView):
     model = ShoppingGuide
     fields = '__all__'
     
-@login_required
+
 class ShoppingGuideCreate(CreateView):
     model = ShoppingGuide
     fields = ['name', 'drink_id', 'drink_image', 'ingredient_1', 'ingredient_2', 'ingredient_3', 'ingredient_4', 'ingredient_5', 'ingredient_6', 'ingredient_7', 'ingredient_8', 'ingredient_9', 'ingredient_10', 'ingredient_11', 'ingredient_12', 'ingredient_13', 'ingredient_14', 'ingredient_15']
@@ -129,7 +129,7 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-@login_required
+
 def create_shopping_guide(request):
     if request.method == 'POST':
         form = ShoppingGuideForm(request.POST)
