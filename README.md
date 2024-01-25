@@ -20,8 +20,9 @@ User Stories
 a detailed list of the functionality of your application, told through a user's perspective
 Wireframes / Screenshots
 
+## Screenshots
 ![image](main_app/static/images/home.png)
 ![image](main_app/static/images/detail.png)
 ![image](main_app/static/images/home.png)
-Entity Relationship Diagrams
+## Entity Relationship Diagrams
 ![image](main_app/static/images/ERD.png)
