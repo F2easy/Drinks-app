@@ -33,7 +33,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 ## SECRET_KEY = 'django-insecure-uam_!)$wf45uo9(l&9h_4gjb)2mo)s%-03fxz=(9mab-l!ov&#'
-SECRET_KEY = env.str('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
@@ -101,11 +101,7 @@ DATABASES = {
     
 }
 
-DATABASES = {
-    'default': dj_database_url.config(     
-    default='postgresql://postgres:postgres@localhost:5432/DrinksAppDB',        
-    conn_max_age=600    )
-    }
+
 
 
 # Password validation
