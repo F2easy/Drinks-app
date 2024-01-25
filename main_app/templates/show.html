@@ -159,6 +159,7 @@
   <p class="sans">{{ response.drinks.0.strInstructions }}</p>
 </div>
 
+{% if user.is_authenticated %}
 <form class="center-align green-button" action="{% url 'shopping_create'  %}" method="POST">
   {% csrf_token %}
   <input hidden type="text" name="user" value="{{ user.id }}">
@@ -182,6 +183,6 @@
   <input hidden type="text" name="strIngredient15" value="{{ response.drinks.0.strIngredient15 }}">
   <input type="submit" class="btn btn-outline-dark" value="Add to Shopping List">
 </form>
-
+{% endif %}
 
 {% endblock %}

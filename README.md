@@ -20,10 +20,9 @@ User Stories
 a detailed list of the functionality of your application, told through a user's perspective
 Wireframes / Screenshots
 
-![image](https://github.com/F2easy/Drinks-App/assets/101888578/d47e9f1c-24bb-4f9d-800e-af93d09d2e5c)
-![image](https://github.com/F2easy/Drinks-App/assets/101888578/8dc4f8a6-2306-4937-9afd-31715486fecc)
-![image](https://github.com/F2easy/Drinks-App/assets/101888578/e5d89ebd-0524-4e0d-8107-e18e69335bc5)
-![image](https://github.com/F2easy/Drinks-App/assets/101888578/5a57da8f-039c-4975-b9b2-f18e7edff7dd)
-![image](https://github.com/F2easy/Drinks-App/assets/101888578/76ab578f-1859-4fed-a6c5-ea868826ff08)
-Entity Relationship Diagrams
-![image](https://github.com/F2easy/Drinks-App/assets/101888578/ffc0bb03-1928-411c-b4a2-461137aa1eb5)
+## Screenshots
+![image](main_app/static/images/home.png)
+![image](main_app/static/images/detail.png)
+![image](main_app/static/images/home.png)
+## Entity Relationship Diagrams
+![image](main_app/static/images/ERD.png)
